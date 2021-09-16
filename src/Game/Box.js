@@ -8,7 +8,9 @@ function Box(props) {
     <div
       className="box_container"
       onClick={() => {
-        onClick(index);
+        if (value === -1) {
+          onClick(index);
+        }
       }}
     >
       {value === -1 ? " " : value === 0 ? "O" : "X"}

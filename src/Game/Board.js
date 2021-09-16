@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import Box from "./Box";
 import "./Board.css";
 
@@ -12,6 +12,7 @@ function Board() {
   const [boardState, setBoardState] = useState(InitialBoardState);
   const [currentTurn, setCurrentTurn] = useState(0);
   const [playerScore, setPlayerScore] = useState([0, 0]);
+  const filledRef = useRef(0);
 
   const performLineCheck = useCallback(
     (mBoardState, changedIndex, changedTurn) => {
@@ -74,6 +75,11 @@ function Board() {
       setBoardState(mBoardState);
       setCurrentTurn(currentTurn === 1 ? 0 : 1);
       performLineCheck(mBoardState, index, currentTurn);
+
+      filledRef.current = filledRef.current + 1;
+      if (filledRef.current === 9) {
+        setBoardState(InitialBoardState);
+      }
     },
     [currentTurn, performLineCheck, setBoardState]
   );
