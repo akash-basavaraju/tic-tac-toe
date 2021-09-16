@@ -92,13 +92,12 @@ function Board() {
             <div className="board_boxes_row">
               {row.map((val, secondIndex) => {
                 return (
-                  <div key={`${firstIndex}-${secondIndex}-${val}`}>
-                    <Box
-                      value={val}
-                      onClick={handleBoxSelect}
-                      index={[firstIndex, secondIndex]}
-                    />
-                  </div>
+                  <Box
+                    value={val}
+                    onClick={handleBoxSelect}
+                    index={[firstIndex, secondIndex]}
+                    key={`${firstIndex}-${secondIndex}-${val}`}
+                  />
                 );
               })}
             </div>
